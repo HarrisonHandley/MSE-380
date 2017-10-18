@@ -7,7 +7,7 @@ b = 80;     %[Ns/m]
 k1 = 1000;  %[N/m]
 k2 = 1200;  %[N/m]
 g = 9.81;   %[m/s^2]
-dt = 0.00001;  %[s]
+dt = 0.001;  %[s]
 
 %%  Defining State Space Matrix
 A = [0      0       k1      0
@@ -52,7 +52,6 @@ for i = 1:length(t)
     x = x + xd*dt;
     xd = A*x + B*g;
     y1 = C*x;
-    x = y1;
     DataArray(i, 1) = y1(1);
     DataArray(i, 2) = y1(2);
     DataArray(i, 3) = y1(3);
@@ -66,7 +65,7 @@ y = lsim(sys, u, t);
 
 figure(1)
 subplot(2,1,1)
-plot (t,y(:,1),'k','LineWidth',2)
+plot (t,y(:,3),'k','LineWidth',2)
 hold on
 plot (t, DataArray(:,3),'r', 'LineWidth', 2)
 grid on
@@ -79,7 +78,7 @@ set (myylabel,'FontSize',12)
 title('MSE 380 Assignment 1 - Q1 - y1')
 
 subplot(2,1,2)
-plot (t, y(:,2),'k', 'LineWidth', 2)
+plot (t, y(:,4),'k', 'LineWidth', 2)
 hold on
 plot (t, DataArray(:,4),'r', 'LineWidth', 2)
 grid on
