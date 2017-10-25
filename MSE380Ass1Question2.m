@@ -1,3 +1,4 @@
+close all
 %%   Initialize Variables
 R = 0.5;        %[m]
 r = 0.04;       %[m]
@@ -11,7 +12,7 @@ k_sp = 1;       %[W/mK]
 
 %%  Initialize Time Array
 
-t = 0.333333333333333:0.333333333333333:21600;
+%t = 0.333333333333333:0.333333333333333:21600;
 
 %%  Initalize and interpolate Ambient Temp
 
@@ -41,7 +42,7 @@ C = [1  0
 %%  Simulation
 
 sys = ss(A, B, C, []);
-y = lsim(sys, T_amb , t, T0);
+y = lsim(sys, T_amb , Time, T0);
 
 %% Plot Results
 
