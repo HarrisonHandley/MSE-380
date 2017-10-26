@@ -10,9 +10,6 @@ c_w = 4190;     %[J/kgK]
 h_w = 100;      %[W/Km^2]
 k_sp = 1;       %[W/mK]
 
-%%  Initialize Time Array
-
-%t = 0.333333333333333:0.333333333333333:21600;
 
 %%  Initalize and interpolate Ambient Temp
 
@@ -48,11 +45,11 @@ y = lsim(sys, T_amb , Time, T0);
 
 figure(1)
 subplot(2,1,1)
-plot (t,y(:,1),'k','LineWidth',2)
+plot (Time,y(:,1),'k','LineWidth',2)
 hold on
-plot (t, y(:,2),'r', 'LineWidth', 2)
+plot (Time, y(:,2),'r', 'LineWidth', 2)
 hold on
-plot (t, T_amb,'g', 'LineWidth', 2)
+plot (Time, T_amb,'g', 'LineWidth', 2)
 grid on
 mylegend=legend ('T_oil', 'T_water', 'T_amb')
 set (mylegend,'FontSize',10,'Location','SouthEast')
@@ -63,9 +60,9 @@ set (myylabel,'FontSize',12)
 title('MSE 380 Assignment 1 - Q2 - System Temperature')
 
 subplot(2,1,2)
-plot (t, y(:,2),'r', 'LineWidth', 2)
+plot (Time, y(:,2),'r', 'LineWidth', 2)
 hold on
-plot (t, T_amb,'g', 'LineWidth', 2)
+plot (Time, T_amb,'g', 'LineWidth', 2)
 grid on
 mylegend=legend ('T_water', 'T_amb')
 set (mylegend,'FontSize',10,'Location','SouthEast')
